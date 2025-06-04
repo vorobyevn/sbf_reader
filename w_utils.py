@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
-from ad_types import adTypes
 
 class WUtils:
+    RENT_DAY = 1
+    RENT_MONTH = 2
+
     def getMedia(self, media_dic, media_id):
         name = media_dic[media_id].lower()
         name = name.replace('.ru', '')
@@ -35,11 +37,11 @@ class WUtils:
     def getRentType(self, rent_type_id):
         # rt = self.getField(row, 'rent_type')
         if rent_type_id is None:
-            return adTypes.RENT_MONTH
+            return RENT_MONTH
         if rent_type_id == 3:
-            return adTypes.RENT_DAY
+            return RENT_DAY
         else:
-            return adTypes.RENT_MONTH
+            return RENT_MONTH
         pass
 # пусто 0
 # любой срок 1
