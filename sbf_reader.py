@@ -5,7 +5,7 @@ sys.path.append('../../general')
 import app
 import file_utils
 from dal_log import dalLog
-from db_winner import dalWinner
+from db import dal
 from linkArray import linkArray
 from buffer import buffer
 from objects import LogEvent
@@ -38,7 +38,7 @@ class SbfReader():
         with open(self.filename, "r+b") as f:
             self.mmFile = mmap.mmap(f.fileno(), 0)
             app.printInfo('Clear table %s'%self.tablename)
-            dalWinner.clearTable(self.tablename)
+            dal.clearTable(self.tablename)
             self.processFile()
             self.mmFile.close()
         self.fields = None
@@ -69,7 +69,7 @@ class SbfReader():
                     idx += 1
                     bulk.append(row)
                 if idx % 1000 == 0 or i == self.recCount - 1:
-                    dalWinner.insertRecBulk(self.tablename, bulk, id_name)
+                    dal.insertRecBulk(self.tablename, bulk, id_name)
                     print('Add %s'%idx)
                     bulk = []
             except Exception as ex:
