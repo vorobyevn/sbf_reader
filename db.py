@@ -216,8 +216,8 @@ class DalW():
             self.Db()[coll_name].remove({id_field:id})
 
     def saveMergeChanged(self, coll_old, coll_new):
-        self.Db().system_js.diff_changed = file_utils.readFile("../general/js/diff_changed.js")
-        self.Db().system_js.save_winner_modify = file_utils.readFile("../general/js/save_winner_modify.js")
+        self.Db().system_js.diff_changed = file_utils.readFile("js/diff_changed.js")
+        self.Db().system_js.save_winner_modify = file_utils.readFile("js/save_modified.js")
         modify = total = 0
         iter_modify = 0
         iter_total = 1
